@@ -3,4 +3,6 @@ dist/
 .env
 *.env
 
+migrations/
+
 node_modules/
