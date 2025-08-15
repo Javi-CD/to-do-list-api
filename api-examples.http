@@ -1,0 +1,184 @@
+### *************
+### * VARIABLES *
+### *************
+@baseUrl = http://localhost:3000
+@token = jwt-token
+
+### Health Check
+GET {{baseUrl}}/health
+
+###
+
+### Register User
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+  
+{
+  "name": "Joe Dev",
+  "email": "joe@dev..com",
+  "password": "JoeDev77"
+}
+
+###
+
+### Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "joe@dev..com",
+  "password": "JoeDev77"
+}
+
+###
+
+### Get Profile
+GET {{baseUrl}}/api/auth/profile
+Authorization: Bearer {{token}}
+
+###
+
+### Get Todos (with filters and pagination)
+GET {{baseUrl}}/api/todos?completed=false&priority=HIGH&page=1&limit=5
+Authorization: Bearer {{token}}
+
+###
+
+### Get Todos
+GET {{baseUrl}}/api/todos
+Authorization: Bearer {{token}}
+
+###
+
+### Get Todo by ID
+GET {{baseUrl}}/api/todos/todo_id_here
+Authorization: Bearer {{token}}
+
+###
+
+### Create Todo
+POST {{baseUrl}}/api/todos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Completar proyecto de React",
+  "description": "Finalizar la aplicación de todo list con todas las funcionalidades",
+  "priority": "HIGH",
+  "dueDate": "2024-02-15T10:00:00Z"
+}
+
+###
+
+### Create Simple Todo
+POST {{baseUrl}}/api/todos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Tarea simple"
+}
+
+###
+
+### Update Todo
+PUT {{baseUrl}}/api/todos/todo_id_here
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Proyecto completado",
+  "completed": true,
+  "priority": "MEDIUM"
+}
+
+###
+
+### Mark Todo as Completed
+PUT {{baseUrl}}/api/todos/todo_id_here
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "completed": true
+}
+
+###
+
+### Change Priority
+PUT {{baseUrl}}/api/todos/todo_id_here
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "priority": "URGENT"
+}
+
+###
+
+### Delete Todo
+DELETE {{baseUrl}}/api/todos/todo_id_here
+Authorization: Bearer {{token}}
+
+###
+
+### Get Todo Statistics
+GET {{baseUrl}}/api/todos/stats
+Authorization: Bearer {{token}}
+
+###
+
+### *********************************
+### *  EXAMPLES OF ADVANCED FILTERS *
+### *********************************
+
+### Get only completed todos
+GET {{baseUrl}}/api/todos?completed=true
+Authorization: Bearer {{token}}
+
+###
+
+### Get todos by priority
+GET {{baseUrl}}/api/todos?priority=URGENT
+Authorization: Bearer {{token}}
+
+###
+
+### Get only pending high priority todos
+GET {{baseUrl}}/api/todos?completed=false&priority=HIGH
+Authorization: Bearer {{token}}
+
+###
+
+### Pagination - Second page
+GET {{baseUrl}}/api/todos?page=2&limit=3
+Authorization: Bearer {{token}}
+
+###
+
+### **********************
+### * EXAMPLES OF ERRORS *
+### **********************
+
+### Error 401 - Without token
+GET {{baseUrl}}/api/todos
+
+###
+
+### Error 400 - Invalid data
+POST {{baseUrl}}/api/todos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "",
+  "priority": "INVALID_PRIORITY"
+}
+
+###
+
+### Error 404 - Not Found
+GET {{baseUrl}}/api/nonexistent
+Authorization: Bearer {{token}}
+
+###
