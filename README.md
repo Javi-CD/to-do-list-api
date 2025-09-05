@@ -12,9 +12,9 @@ API REST for task management application (to do list) built with node.js, expres
 
 ### Prerequisites
 
--Node.js (v16 o superior)
--PostgreSQL
--npm o yarn
+- Node.js (v16 o superior)
+- PostgreSQL
+- npm o yarn
 
 ### 1. Install dependencies
 
@@ -32,7 +32,7 @@ Copy the file [`.env.example`](.env.example) to `.env`and configure the variable
 cp .env.example .env
 ```
 
-> Edit the file [`.env`](.env):
+> Edit the file `.env`
 
 ---
 
@@ -94,7 +94,7 @@ npm start
 
 <summary>View the project structure</summary>
 
-```plaintext
+```yaml
 to-do-list-api/
 ├── src/
 │   ├── config/
@@ -166,4 +166,4 @@ To know the project behavior codes, visit the file [CODE_OF_CONDUCT.md](CODE_OF_
 
 ## License
 
-This project is under the MIT license -see the file [License](LICENSE) For details.
+This project is under the MIT license -see the file [LICENCE](LICENSE) For details.
